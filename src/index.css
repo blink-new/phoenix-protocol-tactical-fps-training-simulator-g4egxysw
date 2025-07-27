@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 0 0% 10%;
+  --accent: 18 100% 60%;
+  --background: 0 0% 6%;
+  --dark-mode: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 64%;
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
+  --ring: 18 100% 60%;
+  --radius: 0.5rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-family: Inter, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.font-orbitron {
+  font-family: Orbitron, monospace;
+}
+
+.tactical-gradient {
+  background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--dark-mode)) 100%);
+}
+
+.tactical-border {
+  border: 1px solid hsl(var(--accent) / 30%);
+  box-shadow: 0 0 20px hsl(var(--accent) / 10%);
+}
+
+.crosshair {
+  position: relative;
+}
+
+.crosshair::before,
+.crosshair::after {
+  content: '';
+  position: absolute;
+  background: hsl(var(--accent));
+  z-index: 10;
+}
+
+.crosshair::before {
+  width: 20px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.crosshair::after {
+  width: 2px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.target-hit {
+  animation: hit-flash 0.3s ease-out;
+}
+
+@keyframes hit-flash {
+  0% { 
+    background-color: hsl(var(--accent)); 
+  }
+
+  100% { 
+    background-color: transparent; 
+  }
+}
+
+.weapon-recoil {
+  animation: recoil 0.2s ease-out;
+}
+
+@keyframes recoil {
+  0% { 
+    transform: translateY(0); 
+  }
+
+  50% { 
+    transform: translateY(-5px); 
+  }
+
+  100% { 
+    transform: translateY(0); 
+  }
+}
+
+.muzzle-flash {
+  animation: flash 0.1s ease-out;
+}
+
+@keyframes flash {
+  0% { 
+    opacity: 100%; 
+    transform: scale(1); 
+  }
+
+  100% { 
+    opacity: 0%; 
+    transform: scale(1.5); 
+  }
+}
+
+.tactical-glow {
+  box-shadow: 0 0 30px hsl(var(--accent) / 30%);
+}
+
+.performance-bar {
+  background: linear-gradient(90deg, hsl(var(--accent)) 0%, hsl(var(--accent) / 50%) 100%);
+}
+
+.achievement-unlock {
+  animation: unlock 0.5s ease-out;
+}
+
+@keyframes unlock {
+  0% { 
+    transform: scale(0.8) rotate(-5deg); 
+    opacity: 0%; 
+  }
+
+  50% { 
+    transform: scale(1.1) rotate(2deg); 
+    opacity: 100%; 
+  }
+
+  100% { 
+    transform: scale(1) rotate(0deg); 
+    opacity: 100%; 
+  }
+}
